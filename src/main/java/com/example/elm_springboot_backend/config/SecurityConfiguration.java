@@ -1,6 +1,5 @@
-package com.example.elm_springboot_backend;
+package com.example.elm_springboot_backend.config;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
@@ -53,7 +52,7 @@ public class SecurityConfiguration {
     //登录成功处理
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response,
-                                        Authentication authentication) throws IOException, ServletException {
+                                        Authentication authentication) throws IOException {
         //设置编码格式，防止出现乱码
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
@@ -63,7 +62,7 @@ public class SecurityConfiguration {
     //登录失败处理
     public void onAuthenticationFailure(HttpServletRequest request,
                                         HttpServletResponse response,
-                                        AuthenticationException exception) throws IOException, ServletException {
+                                        AuthenticationException exception) throws IOException {
         //设置编码格式，防止出现乱码
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
@@ -73,7 +72,7 @@ public class SecurityConfiguration {
     //登出成功处理
     public void onLogoutSuccess(HttpServletRequest request,
                                 HttpServletResponse response,
-                                Authentication authentication) throws IOException, ServletException {
+                                Authentication authentication) throws IOException {
         //设置编码格式，防止出现乱码
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
