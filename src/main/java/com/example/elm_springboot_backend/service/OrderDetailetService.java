@@ -1,6 +1,6 @@
 package com.example.elm_springboot_backend.service;
 
-import com.example.elm_springboot_backend.entity.Orderdetailet;
+import com.example.elm_springboot_backend.entity.dto.OrderDetailet;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author root
  * @since 2023-09-21
  */
-public interface OrderdetailetService extends IService<Orderdetailet> {
+public interface OrderDetailetService extends IService<OrderDetailet> {
 
 }

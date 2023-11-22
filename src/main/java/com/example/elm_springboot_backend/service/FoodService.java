@@ -1,7 +1,9 @@
 package com.example.elm_springboot_backend.service;
 
-import com.example.elm_springboot_backend.entity.Food;
+import com.example.elm_springboot_backend.entity.dto.Food;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2023-09-21
  */
 public interface FoodService extends IService<Food> {
-
+    List<Food> listFoodByBusinessId(Integer businessId);
 }

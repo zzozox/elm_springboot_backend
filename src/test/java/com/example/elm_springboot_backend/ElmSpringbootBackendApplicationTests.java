@@ -1,14 +1,52 @@
 package com.example.elm_springboot_backend;
 
+import com.example.elm_springboot_backend.entity.dto.Account;
+import com.example.elm_springboot_backend.mapper.BusinessMapper;
+import com.example.elm_springboot_backend.service.AccountService;
+import com.example.elm_springboot_backend.service.BusinessService;
+import com.example.elm_springboot_backend.service.FoodService;
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class ElmSpringbootBackendApplicationTests {
 
+    @Resource
+    AccountService accountService;
+
+    @Resource
+    BusinessService businessService;
+
+    @Resource
+    FoodService foodService;
+
     @Test
     void contextLoads() {
     }
 
+    /**
+     * 测试account
+     */
+    @Test
+    public void TestAccount(){
+        System.out.println(accountService.findAccountByNameOrEmail("周芷璇"));
+    }
+    /**
+     * 测试business的功能
+     */
+    @Test
+    public void TestBusiness(){
+        System.out.println(businessService.getAllBusinesses());
+        System.out.println(businessService.findBusinessById(10002));
+        System.out.println(businessService.findBusinessesByOrderTypeId(1));
+    }
+    /**
+     * 测试food的功能
+     */
+    @Test
+    public void TestFood(){
+        System.out.println(foodService.findFoodByBusinessId(10001));
+    }
 }
 

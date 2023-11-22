@@ -1,9 +1,18 @@
 package com.example.elm_springboot_backend.controller;
 
 
+import com.example.elm_springboot_backend.entity.RestBean;
+import com.example.elm_springboot_backend.entity.dto.Business;
+import com.example.elm_springboot_backend.entity.dto.Food;
+import com.example.elm_springboot_backend.service.FoodService;
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,8 +23,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-09-21
  */
 @RestController
-@RequestMapping("/elm_springboot_backend/food")
+@RequestMapping("/food")
 public class FoodController {
+    @Resource
+    private FoodService foodService;
+
+    @GetMapping("/byBusinessId/{businessId}")
+    public RestBean<List<Food>> FoodByBusinessId(@PathVariable Integer businessId) {
+        List<Food> foods = foodService.listFoodByBusinessId(businessId);
+        return RestBean.success(foods);
+    }
 
 }
 

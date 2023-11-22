@@ -1,9 +1,13 @@
-package com.example.elm_springboot_backend.entity;
+package com.example.elm_springboot_backend.entity.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.example.elm_springboot_backend.entity.BaseData;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -17,11 +21,11 @@ import lombok.experimental.Accessors;
  * @since 2023-09-21
  */
 @Data
+@TableName("orderdetailet")
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Orderdetailet implements Serializable {
-
-    private static final long serialVersionUID=1L;
+public class OrderDetailet implements BaseData {
 
     /**
      * 订单明细编号

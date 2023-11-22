@@ -1,19 +1,23 @@
-package com.example.elm_springboot_backend.entity;
+package com.example.elm_springboot_backend.entity.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.example.elm_springboot_backend.entity.BaseData;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 @Data
+@TableName("user")
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class User implements Serializable {
-
-    private static final long serialVersionUID=1L;
+public class User implements BaseData {
     //用户编号
     @TableId(value = "userId", type = IdType.ASSIGN_ID)
     private String userId;

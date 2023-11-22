@@ -1,8 +1,9 @@
 package com.example.elm_springboot_backend.mapper;
 
-import com.example.elm_springboot_backend.entity.Orders;
+import com.example.elm_springboot_backend.entity.dto.Orders;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+
 
 /**
  * <p>
