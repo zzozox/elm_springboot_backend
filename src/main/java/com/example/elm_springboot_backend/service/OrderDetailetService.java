@@ -2,6 +2,8 @@ package com.example.elm_springboot_backend.service;
 
 import com.example.elm_springboot_backend.entity.dto.OrderDetailet;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.elm_springboot_backend.mapper.OrderDetailetMapper;
+import jakarta.annotation.Resource;
 
 /**
  * <p>

@@ -4,6 +4,7 @@ import com.example.elm_springboot_backend.entity.dto.OrderDetailet;
 import com.example.elm_springboot_backend.mapper.OrderDetailetMapper;
 import com.example.elm_springboot_backend.service.OrderDetailetService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +17,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrderDetailetServiceImpl extends ServiceImpl<OrderDetailetMapper, OrderDetailet> implements OrderDetailetService {
-
+    @Resource
+    OrderDetailetMapper orderDetailetMapper;
 }

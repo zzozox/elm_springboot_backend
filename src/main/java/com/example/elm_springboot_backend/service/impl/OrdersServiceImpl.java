@@ -1,40 +1,40 @@
-//package com.example.elm_springboot_backend.service.impl;
-//
-//import com.example.elm_springboot_backend.entity.dto.Cart;
-//import com.example.elm_springboot_backend.entity.dto.OrderDetailet;
-//import com.example.elm_springboot_backend.entity.dto.Orders;
-//import com.example.elm_springboot_backend.mapper.CartMapper;
-//import com.example.elm_springboot_backend.mapper.OrderDetailetMapper;
-//import com.example.elm_springboot_backend.mapper.OrdersMapper;
-//import com.example.elm_springboot_backend.service.OrdersService;
-//import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-//import jakarta.annotation.Resource;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-///**
-// * <p>
-// *  服务实现类
-// * </p>
-// *
-// * @author root
-// * @since 2023-09-21
-// */
-//@Service
-//public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> implements OrdersService {
-//    @Resource
-//    private CartMapper cartMapper;
-//    @Autowired
-//    private OrdersMapper ordersMapper;
-//    @Autowired
-//    private OrderDetailetMapper orderDetailetMapper;
-//    @Override
-//    @Transactional
-//    public int createOrders(Orders orders) {
+package com.example.elm_springboot_backend.service.impl;
+
+import com.example.elm_springboot_backend.entity.dto.Cart;
+import com.example.elm_springboot_backend.entity.dto.OrderDetailet;
+import com.example.elm_springboot_backend.entity.dto.Orders;
+import com.example.elm_springboot_backend.mapper.CartMapper;
+import com.example.elm_springboot_backend.mapper.OrderDetailetMapper;
+import com.example.elm_springboot_backend.mapper.OrdersMapper;
+import com.example.elm_springboot_backend.service.OrdersService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author root
+ * @since 2023-09-21
+ */
+@Service
+public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> implements OrdersService {
+    @Resource
+    private CartMapper cartMapper;
+    @Resource
+    private OrdersMapper ordersMapper;
+    @Resource
+    private OrderDetailetMapper orderDetailetMapper;
+    @Override
+    @Transactional
+    public int createOrders(Orders orders) {
 //        //1、查询当前用户购物车中当前商家的所有食品
 //        Cart cart = new Cart();
 //        cart.setUserId(orders.getUserId());
@@ -61,15 +61,16 @@
 //        cartMapper.removeCart(cart);
 //
 //        return orderId;
-//    }
-//
-//    @Override
-//    public Orders getOrdersById(Integer orderId) {
-//        return ordersMapper.getOrdersById(orderId);
-//    }
-//
-//    @Override
-//    public List<Orders> listOrdersByUserId(String userId){
-//        return ordersMapper.listOrdersByUserId(userId);
-//    }
-//}
+        return 0;
+    }
+
+    @Override
+    public Orders getOrdersById(Integer orderId) {
+        return ordersMapper.getOrdersById(orderId);
+    }
+
+    @Override
+    public List<Orders> listOrdersByUserId(String userId){
+        return ordersMapper.listOrdersByUserId(userId);
+    }
+}

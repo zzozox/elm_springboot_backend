@@ -103,7 +103,7 @@ public class SecurityConfiguration {
         } else if(exceptionOrAuthentication instanceof Authentication authentication){
             User user = (User) authentication.getPrincipal();
             Account account = service.findAccountByNameOrEmail(user.getUsername());
-            String jwt = utils.createJwt(user, account.getUsername(), account.getId());
+            String jwt = utils.createJwt(user, account.getUsername(), account.getUserId());
             if(jwt == null) {
                 writer.write(RestBean.forbidden("登录验证频繁，请稍后再试").asJsonString());
             } else {

@@ -38,15 +38,15 @@ class ElmSpringbootBackendApplicationTests {
     @Test
     public void TestBusiness(){
         System.out.println(businessService.getAllBusinesses());
-        System.out.println(businessService.findBusinessById(10002));
-        System.out.println(businessService.findBusinessesByOrderTypeId(1));
+        System.out.println(businessService.getBusinessById(10002));
+        System.out.println(businessService.listBusinessesByOrderTypeId(1));
     }
     /**
      * 测试food的功能
      */
     @Test
     public void TestFood(){
-        System.out.println(foodService.findFoodByBusinessId(10001));
+        System.out.println(foodService.listFoodByBusinessId(10001));
     }
 }
 

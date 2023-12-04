@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.elm_springboot_backend.service.BusinessService;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * <p>
@@ -25,11 +26,12 @@ public class BusinessController {
 
     /**
      * 列出所有商家
-     * @return
+     *
      */
     @GetMapping("/list")
-    public List<Business> getAllBusinesses() {
-        return businessService.getAllBusinesses();
+    public RestBean<List<Business>> getAllBusinesses() {
+        List<Business> businesses=businessService.getAllBusinesses();
+        return RestBean.success(businesses);
     }
 
     /**
@@ -37,7 +39,7 @@ public class BusinessController {
      * @param orderTypeId
      * @return
      */
-    @GetMapping("/byOrderTypeId/{orderTypeId}")
+    @PostMapping("/byOrderTypeId/{orderTypeId}")
     public RestBean<List<Business>> findBusinessesByOrderTypeId(@PathVariable Integer orderTypeId) {
         List<Business> businesses = businessService.listBusinessesByOrderTypeId(orderTypeId);
         return RestBean.success(businesses);
@@ -48,7 +50,7 @@ public class BusinessController {
      * @param businessId
      * @return
      */
-    @GetMapping("/byBusinessId/{businessId}")
+    @PostMapping("/byBusinessId/{businessId}")
     public ResponseEntity<RestBean<Business>> findBusinessById(@RequestParam Integer businessId) {
         try {
             Business business = businessService.getBusinessById(businessId);
@@ -60,6 +62,14 @@ public class BusinessController {
         } catch (Exception e) {
             return ResponseEntity.status(500).body(RestBean.failure(500, "服务器错误"));
         }
+    }
+
+    private <T> RestBean<T> messageHandle(Supplier<String> action){
+        String message = action.get();
+        if(message == null)
+            return RestBean.success();
+        else
+            return RestBean.failure(400, message);
     }
 }
 

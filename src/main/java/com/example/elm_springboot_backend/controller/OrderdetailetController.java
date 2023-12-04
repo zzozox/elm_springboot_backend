@@ -1,6 +1,8 @@
 package com.example.elm_springboot_backend.controller;
 
 
+import com.example.elm_springboot_backend.service.OrderDetailetService;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-09-21
  */
 @RestController
-@RequestMapping("/elm_springboot_backend/orderdetailet")
+@RequestMapping("/orderdetailet")
 public class OrderdetailetController {
-
+    @Resource
+    OrderDetailetService orderDetailetService;
 }
 

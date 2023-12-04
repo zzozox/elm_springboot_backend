@@ -4,6 +4,8 @@ import com.example.elm_springboot_backend.entity.dto.Orders;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 
 /**
  * <p>
@@ -15,5 +17,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface OrdersMapper extends BaseMapper<Orders> {
-
+    public int createOrders(Orders orders);
+    public Orders getOrdersById(Integer orderId);
+    public List<Orders> listOrdersByUserId(String userId);
 }
