@@ -2,6 +2,7 @@ package com.example.elm_springboot_backend.service;
 
 import com.example.elm_springboot_backend.entity.dto.DeliveryAddress;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.elm_springboot_backend.entity.vo.request.DeliveryAddressVo;
 
 import java.util.List;
 
@@ -14,10 +15,10 @@ import java.util.List;
  * @since 2023-09-21
  */
 public interface DeliveryAddressService extends IService<DeliveryAddress> {
-    public List<DeliveryAddress> listDeliveryAddressByUserId(String userId);
-    public DeliveryAddress getDeliveryAddressById(Integer daId);
-    public int saveDeliveryAddress(DeliveryAddress deliveryAddress);
-    public int updateDeliveryAddress(DeliveryAddress deliveryAddress);
-    public int removeDeliveryAddress(Integer daId);
+    List<DeliveryAddress> listDeliveryAddressByUserId(Integer userId);
+    DeliveryAddress getDeliveryAddressById(Integer daId);
+    String saveDeliveryAddress(DeliveryAddressVo vo);
+    String updateDeliveryAddress(DeliveryAddress deliveryAddress);
+    String removeDeliveryAddress(Integer daId);
 
 }

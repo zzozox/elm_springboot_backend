@@ -51,16 +51,16 @@ public class BusinessController {
      * @return
      */
     @PostMapping("/byBusinessId/{businessId}")
-    public ResponseEntity<RestBean<Business>> findBusinessById(@RequestParam Integer businessId) {
+    public RestBean<Business> findBusinessById(@PathVariable Integer businessId) {
         try {
             Business business = businessService.getBusinessById(businessId);
             if (business != null) {
-                return ResponseEntity.ok(RestBean.success(business));
+                return RestBean.success(business);
             } else {
-                return ResponseEntity.notFound().build();
+                return RestBean.failure(400,"无该商家");
             }
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(RestBean.failure(500, "服务器错误"));
+            return RestBean.failure(500, "服务器错误");
         }
     }
 

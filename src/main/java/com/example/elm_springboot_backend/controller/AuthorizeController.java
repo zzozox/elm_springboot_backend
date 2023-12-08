@@ -2,6 +2,7 @@ package com.example.elm_springboot_backend.controller;
 
 
 import com.example.elm_springboot_backend.entity.RestBean;
+import com.example.elm_springboot_backend.entity.dto.Account;
 import com.example.elm_springboot_backend.entity.vo.request.ConfirmResetVO;
 import com.example.elm_springboot_backend.entity.vo.request.EmailRegisterVO;
 import com.example.elm_springboot_backend.entity.vo.request.EmailResetVO;
@@ -81,6 +82,10 @@ public class AuthorizeController {
                 accountService.resetEmailAccountPassword(vo));
     }
 
+    @PostMapping("/index/{userId}")
+    public RestBean<Account> getUserById(@PathVariable Integer userId){
+        return RestBean.success(accountService.findAccountById(userId));
+    }
     /**
      * 针对于返回值为String作为错误信息的方法进行统一处理
      * @param action 具体操作

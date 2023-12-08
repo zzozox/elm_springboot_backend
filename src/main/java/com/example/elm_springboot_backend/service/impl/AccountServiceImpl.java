@@ -49,6 +49,9 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     @Resource
     FlowUtils flow;
 
+    @Resource
+    AccountMapper accountMapper;
+
     /**
      * 从数据库中通过用户名或邮箱查找用户详细信息
      * @param username 用户名
@@ -201,5 +204,15 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
      */
     private boolean existsAccountByUsername(String username){
         return this.baseMapper.exists(Wrappers.<Account>query().eq("username", username));
+    }
+
+    /**
+     * 通过Id查找用户
+     * @param userId
+     * @return
+     */
+    @Override
+    public Account findAccountById(Integer userId) {
+        return accountMapper.selectById(userId);
     }
 }

@@ -1,14 +1,17 @@
 package com.example.elm_springboot_backend.controller;
 
 
+import com.example.elm_springboot_backend.entity.RestBean;
 import com.example.elm_springboot_backend.entity.dto.DeliveryAddress;
+import com.example.elm_springboot_backend.entity.vo.request.CartVo;
+import com.example.elm_springboot_backend.entity.vo.request.DeliveryAddressVo;
 import com.example.elm_springboot_backend.service.DeliveryAddressService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * <p>
@@ -25,32 +28,39 @@ public class DeliveryaddressController {
     @Resource
     private DeliveryAddressService deliveryAddressService;
 
-    @RequestMapping("/listDeliveryAddressByUserId")
-    public List<DeliveryAddress> listDeliveryAddressByUserId(DeliveryAddress deliveryAddress)
-            throws Exception{
-        return deliveryAddressService.listDeliveryAddressByUserId(deliveryAddress.getUserId());
+    @PostMapping ("/listDeliveryAddressByUserId/{userId}")
+    public RestBean<List<DeliveryAddress>> listDeliveryAddressByUserId(@PathVariable Integer userId){
+        return RestBean.success(deliveryAddressService.listDeliveryAddressByUserId(userId));
     }
 
-    @RequestMapping("/getDeliveryAddressById")
-    public DeliveryAddress getDeliveryAddressById(DeliveryAddress deliveryAddress) throws
-            Exception{
-        return deliveryAddressService.getDeliveryAddressById(deliveryAddress.getDaId());
+    @PostMapping("/getDeliveryAddressById/{daId}")
+    public RestBean<DeliveryAddress> getDeliveryAddressById(@PathVariable Integer daId){
+        return RestBean.success(deliveryAddressService.getDeliveryAddressById(daId));
     }
 
-    @RequestMapping("/saveDeliveryAddress")
-    public int saveDeliveryAddress(DeliveryAddress deliveryAddress) throws Exception{
-        return deliveryAddressService.saveDeliveryAddress(deliveryAddress);
+    @PostMapping("/saveDeliveryAddress")
+    public RestBean<Void> saveDeliveryAddress(@RequestBody @Valid DeliveryAddressVo vo){
+        return this.messageHandle(() ->
+                deliveryAddressService.saveDeliveryAddress(vo));
     }
 
-    @RequestMapping("/updateDeliveryAddress")
-    public int updateDeliveryAddress(DeliveryAddress deliveryAddress) throws Exception{
-        return deliveryAddressService.updateDeliveryAddress(deliveryAddress);
+    @PostMapping("/updateDeliveryAddress")
+    public void updateDeliveryAddress(@RequestBody @Valid DeliveryAddress deliveryAddress){
+        deliveryAddressService.updateDeliveryAddress(deliveryAddress);
     }
 
-    @RequestMapping("/removeDeliveryAddress")
-    public int removeDeliveryAddress(DeliveryAddress deliveryAddress) throws Exception{
-        return deliveryAddressService.removeDeliveryAddress(deliveryAddress.getDaId());
+    @PostMapping("/removeDeliveryAddress/{daId}")
+    public RestBean<Void> removeDeliveryAddress(@PathVariable Integer daId){
+        return this.messageHandle(() ->
+                deliveryAddressService.removeDeliveryAddress(daId));
     }
 
+    private <T> RestBean<T> messageHandle(Supplier<String> action){
+        String message = action.get();
+        if(message == null)
+            return RestBean.success();
+        else
+            return RestBean.failure(400, message);
+    }
 }
 

@@ -1,15 +1,16 @@
 package com.example.elm_springboot_backend.controller;
 
 
+import com.example.elm_springboot_backend.entity.RestBean;
 import com.example.elm_springboot_backend.entity.dto.Cart;
-import com.example.elm_springboot_backend.entity.dto.DeliveryAddress;
+import com.example.elm_springboot_backend.entity.vo.request.CartVo;
 import com.example.elm_springboot_backend.service.CartService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * <p>
@@ -25,24 +26,39 @@ public class CartController {
     @Resource
     private CartService cartService;
 
-    @RequestMapping("/listCart")
-    public List<Cart> listCart(Cart cart) throws Exception{
-        return cartService.listCart(cart);
+    @PostMapping("/listCartByUserId/{userId}")
+    public RestBean<List<Cart>> listCartByUserId(@PathVariable Integer userId){
+        return RestBean.success(cartService.listCartByAccountId(userId));
+    }
+    @PostMapping("/listCartByUserIdAndBusinessId/{businessId}/{userId}")
+    public RestBean<List<Cart>> listCartByUserIdAndBusinessId(@PathVariable Integer businessId,
+                                                              @PathVariable Integer userId){
+        return RestBean.success(cartService.listCartByAccountIdAndBusinessId(businessId,userId));
+    }
+    @PostMapping("/saveCart")
+    public RestBean<Void> saveCart(@RequestBody @Valid CartVo vo){
+        return this.messageHandle(() ->
+                cartService.saveCart(vo));
     }
 
-    @RequestMapping("/saveCart")
-    public int saveCart(Cart cart) throws Exception{
-        return cartService.saveCart(cart);
+    @PostMapping ("/updateCart")
+    public RestBean<Void> updateCart(@RequestBody @Valid Cart cart){
+        return this.messageHandle(() ->
+                cartService.updateCart(cart));
     }
 
-    @RequestMapping("/updateCart")
-    public int updateCart(Cart cart) throws Exception{
-        return cartService.updateCart(cart);
+    @RequestMapping("/removeCart/{cartId}")
+    public RestBean<Void> removeCart(@PathVariable Integer cartId){
+        return this.messageHandle(() ->
+                cartService.removeCart(cartId));
     }
 
-    @RequestMapping("/removeCart")
-    public int removeCart(Cart cart) throws Exception{
-        return cartService.removeCart(cart);
+    private <T> RestBean<T> messageHandle(Supplier<String> action){
+        String message = action.get();
+        if(message == null)
+            return RestBean.success();
+        else
+            return RestBean.failure(400, message);
     }
 }
 

@@ -20,46 +20,29 @@ import lombok.experimental.Accessors;
  * @since 2023-09-21
  */
 @Data
-@TableName("deliveraddress")
+@TableName("deliveryaddress")
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class DeliveryAddress implements BaseData {
-
-    /**
-     * 送货地址编号
-     */
+    //送货地址编号
     @TableId(value = "daId", type = IdType.AUTO)
     private Integer daId;
-
-    /**
-     * 联系人姓名
-     */
+    //联系人姓名
     @TableField("contactName")
     private String contactName;
-
-    /**
-     * 联系人性别
-     */
+    //联系人性别
     @TableField("contactSex")
     private Integer contactSex;
-
-    /**
-     * 联系人电话
-     */
+    //联系人电话
     @TableField("contactTel")
     private String contactTel;
-
-    /**
-     * 送货地址
-     */
+    // 送货地址
+    @TableField("address")
     private String address;
-
-    /**
-     * 所属用户编号
-     */
+    //所属用户编号
     @TableField("userId")
-    private String userId;
+    private Integer userId;
 
 
 }

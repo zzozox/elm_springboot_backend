@@ -30,7 +30,7 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
      */
     @Override
     public List<Business> getAllBusinesses() {
-        return list();
+        return businessMapper.selectList(null);
     }
 
     /**
@@ -53,9 +53,10 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
      */
     @Override
     public Business getBusinessById(Integer businessId) {
-        QueryWrapper<Business> foodQueryWrapper=new QueryWrapper<>();
-        foodQueryWrapper.eq("businessId",businessId);
-        return businessMapper.selectOne(foodQueryWrapper);
+//        QueryWrapper<Business> foodQueryWrapper=new QueryWrapper<>();
+//        foodQueryWrapper.eq("businessId",businessId);
+//        return businessMapper.selectOne(foodQueryWrapper);
+        return businessMapper.selectById(businessId);
     }
 
 }

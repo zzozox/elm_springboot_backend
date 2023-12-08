@@ -34,4 +34,9 @@ public class FoodServiceImpl extends ServiceImpl<FoodMapper, Food> implements Fo
         foodQueryWrapper.eq("businessId",businessId);
         return foodMapper.selectList(foodQueryWrapper);
     }
+
+    @Override
+    public Food getFoodById(Integer foodId) {
+        return foodMapper.selectById(foodId);
+    }
 }

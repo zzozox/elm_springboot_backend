@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface FoodService extends IService<Food> {
     List<Food> listFoodByBusinessId(Integer businessId);
+    Food getFoodById(Integer foodId);
 }
