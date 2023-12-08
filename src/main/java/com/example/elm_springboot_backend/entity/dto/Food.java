@@ -65,6 +65,9 @@ public class Food implements BaseData {
     @TableField("businessId")
     private Integer businessId;
 
+    //食品数量
+    @TableField("quantity")
+    private Integer quantity;
     /**
      * 备注
      */

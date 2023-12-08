@@ -3,7 +3,8 @@ package com.example.elm_springboot_backend.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.elm_springboot_backend.entity.dto.Cart;
-import com.example.elm_springboot_backend.entity.vo.request.CartVo;
+import com.example.elm_springboot_backend.entity.vo.CartListVo;
+import com.example.elm_springboot_backend.entity.vo.CartVo;
 import com.example.elm_springboot_backend.mapper.CartMapper;
 import com.example.elm_springboot_backend.service.CartService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -41,10 +42,10 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
      * @return
      */
     @Override
-    public List<Cart> listCartByAccountIdAndBusinessId(Integer businessId,Integer userId) {
+    public List<Cart> listCartByAccountIdAndBusinessId(CartListVo vo) {
         QueryWrapper<Cart> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("userId",userId)
-                    .eq("businessId",businessId);
+        queryWrapper.eq("userId",vo.getUserId())
+                    .eq("businessId",vo.getBusinessId());
         return cartMapper.selectList(queryWrapper);
     }
     @Override

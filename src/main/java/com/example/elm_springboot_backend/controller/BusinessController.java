@@ -63,14 +63,6 @@ public class BusinessController {
             return RestBean.failure(500, "服务器错误");
         }
     }
-
-    private <T> RestBean<T> messageHandle(Supplier<String> action){
-        String message = action.get();
-        if(message == null)
-            return RestBean.success();
-        else
-            return RestBean.failure(400, message);
-    }
 }
 
 

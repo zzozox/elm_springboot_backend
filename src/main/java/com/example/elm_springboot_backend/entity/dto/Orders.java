@@ -27,46 +27,25 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class Orders implements BaseData {
-
-    /**
-     * 订单编号
-     */
+    //订单编号
     @TableId(value = "orderId", type = IdType.AUTO)
     private Integer orderId;
-
-    /**
-     * 用户编号
-     */
+    //用户编号
     @TableField("userId")
-    private String userId;
-
-    /**
-     * 商家编号
-     */
+    private Integer userId;
+    //商家编号
     @TableField("businessId")
     private Integer businessId;
-
-    /**
-     * 订购日期
-     */
+    //订购日期
     @TableField("orderDate")
     private String orderDate;
-
-    /**
-     * 订单总价
-     */
+    //订单总价
     @TableField("orderTotal")
     private BigDecimal orderTotal;
-
-    /**
-     * 送货地址编号
-     */
+    //送货地址编号
     @TableField("daId")
     private Integer daId;
-
-    /**
-     * 订单状态（0：未支付； 1：已支付）
-     */
+    //订单状态（0：未支付； 1：已支付）
     @TableField("orderState")
     private Integer orderState;
 

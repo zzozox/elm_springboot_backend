@@ -3,9 +3,9 @@ package com.example.elm_springboot_backend.controller;
 
 import com.example.elm_springboot_backend.entity.RestBean;
 import com.example.elm_springboot_backend.entity.dto.Account;
-import com.example.elm_springboot_backend.entity.vo.request.ConfirmResetVO;
-import com.example.elm_springboot_backend.entity.vo.request.EmailRegisterVO;
-import com.example.elm_springboot_backend.entity.vo.request.EmailResetVO;
+import com.example.elm_springboot_backend.entity.vo.ConfirmResetVO;
+import com.example.elm_springboot_backend.entity.vo.EmailRegisterVO;
+import com.example.elm_springboot_backend.entity.vo.EmailResetVO;
 import com.example.elm_springboot_backend.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

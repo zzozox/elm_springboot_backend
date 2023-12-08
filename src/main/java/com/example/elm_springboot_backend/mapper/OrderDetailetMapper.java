@@ -17,8 +17,4 @@ import java.util.List;
 @Mapper
 public interface OrderDetailetMapper extends BaseMapper<OrderDetailet> {
 
-    public int saveOrderDetailetBatch(List<OrderDetailet> list);
-
-    public List<OrderDetailet> listOrderDetailetByOrderId(Integer orderOd);
-
 }

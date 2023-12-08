@@ -2,7 +2,7 @@ package com.example.elm_springboot_backend.config;
 
 import com.example.elm_springboot_backend.entity.RestBean;
 import com.example.elm_springboot_backend.entity.dto.Account;
-import com.example.elm_springboot_backend.entity.vo.response.AuthorizeVO;
+import com.example.elm_springboot_backend.entity.vo.AuthorizeVO;
 import com.example.elm_springboot_backend.filter.JwtAuthenticationFilter;
 import com.example.elm_springboot_backend.filter.RequestLogFilter;
 import com.example.elm_springboot_backend.service.AccountService;

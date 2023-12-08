@@ -3,7 +3,8 @@ package com.example.elm_springboot_backend.controller;
 
 import com.example.elm_springboot_backend.entity.RestBean;
 import com.example.elm_springboot_backend.entity.dto.Cart;
-import com.example.elm_springboot_backend.entity.vo.request.CartVo;
+import com.example.elm_springboot_backend.entity.vo.CartListVo;
+import com.example.elm_springboot_backend.entity.vo.CartVo;
 import com.example.elm_springboot_backend.service.CartService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
@@ -30,10 +31,9 @@ public class CartController {
     public RestBean<List<Cart>> listCartByUserId(@PathVariable Integer userId){
         return RestBean.success(cartService.listCartByAccountId(userId));
     }
-    @PostMapping("/listCartByUserIdAndBusinessId/{businessId}/{userId}")
-    public RestBean<List<Cart>> listCartByUserIdAndBusinessId(@PathVariable Integer businessId,
-                                                              @PathVariable Integer userId){
-        return RestBean.success(cartService.listCartByAccountIdAndBusinessId(businessId,userId));
+    @PostMapping("/listCartByUserIdAndBusinessId")
+    public RestBean<List<Cart>> listCartByUserIdAndBusinessId(@RequestBody @Valid CartListVo vo){
+        return RestBean.success(cartService.listCartByAccountIdAndBusinessId(vo));
     }
     @PostMapping("/saveCart")
     public RestBean<Void> saveCart(@RequestBody @Valid CartVo vo){

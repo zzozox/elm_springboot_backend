@@ -3,8 +3,7 @@ package com.example.elm_springboot_backend.controller;
 
 import com.example.elm_springboot_backend.entity.RestBean;
 import com.example.elm_springboot_backend.entity.dto.DeliveryAddress;
-import com.example.elm_springboot_backend.entity.vo.request.CartVo;
-import com.example.elm_springboot_backend.entity.vo.request.DeliveryAddressVo;
+import com.example.elm_springboot_backend.entity.vo.DeliveryAddressVo;
 import com.example.elm_springboot_backend.service.DeliveryAddressService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;

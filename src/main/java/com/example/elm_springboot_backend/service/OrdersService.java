@@ -2,6 +2,7 @@ package com.example.elm_springboot_backend.service;
 
 import com.example.elm_springboot_backend.entity.dto.Orders;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.elm_springboot_backend.entity.vo.OrderVo;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ import java.util.List;
  */
 public interface OrdersService extends IService<Orders> {
 
-    public int createOrders(Orders orders);
-    public Orders getOrdersById(Integer orderId);
-    public List<Orders> listOrdersByUserId(String userId);
+    String saveOrders(OrderVo vo);
+    Orders getOrdersById(Integer orderId);
+    List<Orders> listOrdersByUserId(Integer userId);
 
 }

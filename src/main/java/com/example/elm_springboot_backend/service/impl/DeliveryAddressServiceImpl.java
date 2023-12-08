@@ -3,7 +3,7 @@ package com.example.elm_springboot_backend.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.elm_springboot_backend.entity.dto.DeliveryAddress;
-import com.example.elm_springboot_backend.entity.vo.request.DeliveryAddressVo;
+import com.example.elm_springboot_backend.entity.vo.DeliveryAddressVo;
 import com.example.elm_springboot_backend.mapper.DeliveryAddressMapper;
 import com.example.elm_springboot_backend.service.DeliveryAddressService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

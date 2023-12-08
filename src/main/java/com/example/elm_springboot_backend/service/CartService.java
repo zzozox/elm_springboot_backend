@@ -2,7 +2,8 @@ package com.example.elm_springboot_backend.service;
 
 import com.example.elm_springboot_backend.entity.dto.Cart;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.elm_springboot_backend.entity.vo.request.CartVo;
+import com.example.elm_springboot_backend.entity.vo.CartListVo;
+import com.example.elm_springboot_backend.entity.vo.CartVo;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public interface CartService extends IService<Cart> {
     List<Cart> listCartByAccountId(Integer userId);
-    List<Cart> listCartByAccountIdAndBusinessId(Integer businessId,Integer userId);
+    List<Cart> listCartByAccountIdAndBusinessId(CartListVo vo);
     String saveCart(CartVo vo);
     String updateCart(Cart cart);
     String removeCart(Integer cartId);

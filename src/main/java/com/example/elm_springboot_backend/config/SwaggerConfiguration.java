@@ -1,7 +1,7 @@
 package com.example.elm_springboot_backend.config;
 
 import com.example.elm_springboot_backend.entity.RestBean;
-import com.example.elm_springboot_backend.entity.vo.response.AuthorizeVO;
+import com.example.elm_springboot_backend.entity.vo.AuthorizeVO;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;

@@ -32,7 +32,6 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
     public List<Business> getAllBusinesses() {
         return businessMapper.selectList(null);
     }
-
     /**
      * mybatisPlus-QueryWrapper多条件查询
      * 根据商家类型编号查询某一类型商家信息
@@ -45,7 +44,6 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
         queryWrapper.eq("orderTypeId", orderTypeId);
         return businessMapper.selectList(queryWrapper);
     }
-
     /**
      * 根据商家Id查询商家信息
      * @param businessId
@@ -53,9 +51,6 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
      */
     @Override
     public Business getBusinessById(Integer businessId) {
-//        QueryWrapper<Business> foodQueryWrapper=new QueryWrapper<>();
-//        foodQueryWrapper.eq("businessId",businessId);
-//        return businessMapper.selectOne(foodQueryWrapper);
         return businessMapper.selectById(businessId);
     }
 

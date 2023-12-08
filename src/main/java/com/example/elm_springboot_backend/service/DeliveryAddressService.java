@@ -2,7 +2,7 @@ package com.example.elm_springboot_backend.service;
 
 import com.example.elm_springboot_backend.entity.dto.DeliveryAddress;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.elm_springboot_backend.entity.vo.request.DeliveryAddressVo;
+import com.example.elm_springboot_backend.entity.vo.DeliveryAddressVo;
 
 import java.util.List;
 

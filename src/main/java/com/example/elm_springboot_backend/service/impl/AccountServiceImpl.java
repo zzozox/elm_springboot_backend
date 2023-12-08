@@ -4,15 +4,14 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.elm_springboot_backend.entity.dto.Account;
-import com.example.elm_springboot_backend.entity.vo.request.ConfirmResetVO;
-import com.example.elm_springboot_backend.entity.vo.request.EmailRegisterVO;
-import com.example.elm_springboot_backend.entity.vo.request.EmailResetVO;
+import com.example.elm_springboot_backend.entity.vo.ConfirmResetVO;
+import com.example.elm_springboot_backend.entity.vo.EmailRegisterVO;
+import com.example.elm_springboot_backend.entity.vo.EmailResetVO;
 import com.example.elm_springboot_backend.mapper.AccountMapper;
 import com.example.elm_springboot_backend.service.AccountService;
 import com.example.elm_springboot_backend.utils.Const;
 import com.example.elm_springboot_backend.utils.FlowUtils;
 import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;

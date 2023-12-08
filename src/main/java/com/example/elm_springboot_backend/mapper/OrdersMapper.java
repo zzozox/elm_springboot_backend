@@ -17,7 +17,4 @@ import java.util.List;
  */
 @Mapper
 public interface OrdersMapper extends BaseMapper<Orders> {
-    public int createOrders(Orders orders);
-    public Orders getOrdersById(Integer orderId);
-    public List<Orders> listOrdersByUserId(String userId);
 }
