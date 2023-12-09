@@ -35,10 +35,10 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         queryWrapper.eq("userId",userId);
         return cartMapper.selectList(queryWrapper);
     }
+
     /**
      * 根据用户编号和商家编号，查询此用户购物车中某个商家的所有购物车信息
-     * @param businessId
-     * @param userId
+     * @param vo
      * @return
      */
     @Override

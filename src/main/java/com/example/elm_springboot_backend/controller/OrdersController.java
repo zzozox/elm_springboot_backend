@@ -26,10 +26,10 @@ public class OrdersController {
     @Resource
     private OrdersService ordersService;
 
+    //如果返回类型不再需要是订单编号，记得修改这里的返回值类型
     @PostMapping("/createOrders")
-    public RestBean<Void> createOrders(@RequestBody @Valid OrderVo vo){
-        return this.messageHandle(() ->
-                ordersService.saveOrders(vo));
+    public RestBean<Orders> createOrders(@RequestBody @Valid OrderVo vo){
+        return RestBean.success(ordersService.saveOrders(vo));
     }
 
     @PostMapping("/getOrdersById/{orderId}")

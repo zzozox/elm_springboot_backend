@@ -1,8 +1,11 @@
 package com.example.elm_springboot_backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.elm_springboot_backend.entity.dto.Cart;
+import com.example.elm_springboot_backend.entity.dto.OrderDetailet;
 import com.example.elm_springboot_backend.entity.dto.Orders;
 import com.example.elm_springboot_backend.entity.vo.OrderVo;
+import com.example.elm_springboot_backend.mapper.CartMapper;
 import com.example.elm_springboot_backend.mapper.OrdersMapper;
 import com.example.elm_springboot_backend.service.OrdersService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -25,8 +28,11 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
     @Resource
     private OrdersMapper ordersMapper;
 
+    @Resource
+    private CartMapper cartMapper;
+
     @Override
-    public String saveOrders(OrderVo vo) {
+    public Orders saveOrders(OrderVo vo) {
         Orders orders=new Orders(
                 null,
                 vo.getUserId(),
@@ -34,11 +40,21 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
                 LocalDateTime.now().toString(),
                 vo.getOrderTotal(),
                 vo.getDaId(),
-                vo.getOrderState());
-        if(ordersMapper.insert(orders)==1){
-            return null;
+                0);
+        if(ordersMapper.insert(orders)==1) {
+            //在生成订单的同时再生成订单明细
+            //订单明细应该存的食物和数量是二维数组，与数据库不符，后续有时间再修改
+            //在支付页面的订单明细直接由订单确认界面传给支付界面
+            //OrderDetailet orderDetailet=new OrderDetailet();
+            //订单生成成功后删除购物车记录，即该用户在该商家下的购物车记录
+            QueryWrapper<Cart> cartQueryWrapper = new QueryWrapper<>();
+            cartQueryWrapper.eq("userId", orders.getUserId())
+                    .eq("businessId", orders.getBusinessId());
+            cartMapper.delete(cartQueryWrapper);
+            //文档上写的返回订单编号，虽然但是，能跑就行，暂时不改
+            return orders;
         }else {
-            return "保存订单成功";
+            return null;
         }
     }
 

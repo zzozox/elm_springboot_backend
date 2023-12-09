@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
  * @since 2023-09-21
  */
 @Data
-@TableName(value="orderdetailet",autoResultMap = true)
+@TableName("orderdetailet")
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
@@ -31,13 +31,13 @@ public class OrderDetailet implements BaseData {
     @TableId(value = "odId", type = IdType.AUTO)
     private Integer odId;
     //所属订单编号
-    @TableField(value = "orderId",typeHandler = FastjsonTypeHandler.class)
+    @TableField(value = "orderId")
     private Integer orderId;
     //食品编号
-    @TableField(value = "foodId",typeHandler = FastjsonTypeHandler.class)
+    @TableField(value = "foodId")
     private Integer foodId;
     //数量
-    @TableField(value = "quantity",typeHandler = FastjsonTypeHandler.class)
+    @TableField(value = "quantity")
     private Integer quantity;
 
 
