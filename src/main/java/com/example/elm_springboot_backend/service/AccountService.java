@@ -2,9 +2,7 @@ package com.example.elm_springboot_backend.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.elm_springboot_backend.entity.dto.Account;
-import com.example.elm_springboot_backend.entity.vo.ConfirmResetVO;
-import com.example.elm_springboot_backend.entity.vo.EmailRegisterVO;
-import com.example.elm_springboot_backend.entity.vo.EmailResetVO;
+import com.example.elm_springboot_backend.entity.vo.*;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface AccountService extends IService<Account>, UserDetailsService {
@@ -14,4 +12,5 @@ public interface AccountService extends IService<Account>, UserDetailsService {
     String resetEmailAccountPassword(EmailResetVO info);
     String resetConfirm(ConfirmResetVO info);
     Account findAccountById(Integer userId);
+    String updateAccount(UpdataAccountVo updataAccountVo);
 }

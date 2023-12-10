@@ -6,6 +6,7 @@ import com.example.elm_springboot_backend.entity.dto.Account;
 import com.example.elm_springboot_backend.entity.vo.ConfirmResetVO;
 import com.example.elm_springboot_backend.entity.vo.EmailRegisterVO;
 import com.example.elm_springboot_backend.entity.vo.EmailResetVO;
+import com.example.elm_springboot_backend.entity.vo.UpdataAccountVo;
 import com.example.elm_springboot_backend.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -85,6 +86,12 @@ public class AuthorizeController {
     @PostMapping("/index/{userId}")
     public RestBean<Account> getUserById(@PathVariable Integer userId){
         return RestBean.success(accountService.findAccountById(userId));
+    }
+
+    @PostMapping("/updateUser")
+    public RestBean<Void> updateUser(@RequestBody @Valid UpdataAccountVo vo){
+        return  this.messageHandle(() ->
+                accountService.updateAccount(vo));
     }
     /**
      * 针对于返回值为String作为错误信息的方法进行统一处理

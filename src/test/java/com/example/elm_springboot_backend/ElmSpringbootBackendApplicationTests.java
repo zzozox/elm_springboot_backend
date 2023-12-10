@@ -30,6 +30,9 @@ class ElmSpringbootBackendApplicationTests {
     @Resource
     OrdersService ordersService;
 
+    @Resource
+    OrderDetailetService orderDetailetService;
+
     @Test
     void contextLoads() {
     }
@@ -97,6 +100,12 @@ class ElmSpringbootBackendApplicationTests {
         orderVo.setDaId(1);
         orderVo.setOrderTotal(BigDecimal.valueOf(34));
         System.out.println(ordersService.saveOrders(orderVo));
+    }
+
+
+    @Test
+    public void TestOrderDetailetService(){
+        orderDetailetService.listOrderDetailetbyUserId(4);
     }
 }
 

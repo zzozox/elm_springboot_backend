@@ -18,17 +18,17 @@ import java.util.Date;
 @AllArgsConstructor
 public class Account implements BaseData {
     @TableId(value = "id",type = IdType.AUTO)
-    Integer userId;
+    private Integer userId;
     @TableField("username")
-    String username;
+    private String username;
     @TableField("password")
-    String password;
+    private String password;
     @TableField("email")
-    String email;
+    private String email;
     @TableField("role")
-    String role;
+    private String role;
     @TableField("register_time")
-    Date registerTime;
+    private Date registerTime;
     //用户性别
     @TableField("userSex")
     private Integer userSex;

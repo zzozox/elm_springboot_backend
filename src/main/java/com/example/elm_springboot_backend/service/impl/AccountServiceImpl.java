@@ -1,5 +1,6 @@
 package com.example.elm_springboot_backend.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -7,6 +8,7 @@ import com.example.elm_springboot_backend.entity.dto.Account;
 import com.example.elm_springboot_backend.entity.vo.ConfirmResetVO;
 import com.example.elm_springboot_backend.entity.vo.EmailRegisterVO;
 import com.example.elm_springboot_backend.entity.vo.EmailResetVO;
+import com.example.elm_springboot_backend.entity.vo.UpdataAccountVo;
 import com.example.elm_springboot_backend.mapper.AccountMapper;
 import com.example.elm_springboot_backend.service.AccountService;
 import com.example.elm_springboot_backend.utils.Const;
@@ -213,5 +215,20 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     @Override
     public Account findAccountById(Integer userId) {
         return accountMapper.selectById(userId);
+    }
+
+    @Override
+    public String updateAccount(UpdataAccountVo updataAccountVo) {
+        UpdateWrapper<Account> accountUpdateWrapper=new UpdateWrapper<>();
+        accountUpdateWrapper.eq("userId",updataAccountVo.getUserId())
+                            .set("username",updataAccountVo.getUsername())
+                .set("userSex",updataAccountVo.getUserSex())
+                .set("userImg",updataAccountVo.getUserImg())
+                .set("password",updataAccountVo.getPassword());
+        if(accountMapper.update(null,accountUpdateWrapper)==1) {
+            return null;
+        }else {
+            return "修改用户信息失败";
+        }
     }
 }

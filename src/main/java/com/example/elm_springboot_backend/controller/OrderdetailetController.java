@@ -2,16 +2,13 @@ package com.example.elm_springboot_backend.controller;
 
 
 import com.example.elm_springboot_backend.entity.RestBean;
+import com.example.elm_springboot_backend.entity.vo.OrderDetailetVo;
 import com.example.elm_springboot_backend.entity.vo.CartListVo;
 import com.example.elm_springboot_backend.entity.vo.OrderDetailetListVo;
 import com.example.elm_springboot_backend.service.OrderDetailetService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,9 +26,16 @@ public class OrderdetailetController {
     @Resource
     OrderDetailetService orderDetailetService;
 
+    //Order组件的
     @PostMapping("/listOrderDetailet")
     public RestBean<List<OrderDetailetListVo>> listOrderDetailet(@RequestBody @Valid CartListVo vo){
         return RestBean.success(orderDetailetService.listOrderDetailet(vo));
+    }
+
+    //OderList组件的
+    @PostMapping("/listOrderDetailetbyUserId/{userId}")
+    public RestBean<List<OrderDetailetVo>> listOrderDetailetbyUserId(@PathVariable Integer userId){
+        return RestBean.success(orderDetailetService.listOrderDetailetbyUserId(userId));
     }
 }
 
