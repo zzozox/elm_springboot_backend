@@ -44,8 +44,9 @@ public class DeliveryaddressController {
     }
 
     @PostMapping("/updateDeliveryAddress")
-    public void updateDeliveryAddress(@RequestBody @Valid DeliveryAddress deliveryAddress){
-        deliveryAddressService.updateDeliveryAddress(deliveryAddress);
+    public RestBean<Void> updateDeliveryAddress(@RequestBody @Valid DeliveryAddress deliveryAddress){
+        return this.messageHandle(() ->
+                deliveryAddressService.updateDeliveryAddress(deliveryAddress));
     }
 
     @PostMapping("/removeDeliveryAddress/{daId}")
