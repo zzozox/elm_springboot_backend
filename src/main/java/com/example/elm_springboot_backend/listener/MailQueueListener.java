@@ -36,10 +36,6 @@ public class MailQueueListener {
                     createMessage("欢迎注册我们的网站",
                             "您的邮件注册验证码为: "+code+"，有效时间3分钟，为了保障您的账户安全，请勿向他人泄露验证码信息。",
                             email);
-//            case "register" ->
-//                    createMessage("晚上好我的刘先生：",
-//                            "又需要你帮我调试啦，验证码是 "+code+"哦，我记得有效时间只有三分钟，请你稍稍抽空发我一下验证码吧，还有就是，早点睡啦",
-//                            email);
             case "reset" ->
                     createMessage("您的密码重置邮件",
                             "你好，您正在执行重置密码操作，验证码: "+code+"，有效时间3分钟，如非本人操作，请无视。",

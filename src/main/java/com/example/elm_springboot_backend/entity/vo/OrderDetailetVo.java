@@ -21,6 +21,10 @@ public class OrderDetailetVo{
     //又移回前端了
     private Orders orders;
     private Business business;
+//    private Integer orderId;
+//    private Integer orderState;
+//    private BigDecimal orderTotal;
+//    private String businessName;
+//    private BigDecimal deliveryPrice;
     private List<OrderDetailetListVo> orderDetailetListVos;
-
 }

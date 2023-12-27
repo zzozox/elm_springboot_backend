@@ -1,5 +1,6 @@
 package com.example.elm_springboot_backend;
 
+import com.example.elm_springboot_backend.entity.vo.CartListVo;
 import com.example.elm_springboot_backend.entity.vo.DeliveryAddressVo;
 import com.example.elm_springboot_backend.entity.vo.OrderVo;
 import com.example.elm_springboot_backend.service.*;
@@ -59,6 +60,7 @@ class ElmSpringbootBackendApplicationTests {
     @Test
     public void TestFood(){
         System.out.println(foodService.listFoodByBusinessId(10001));
+        System.out.println(foodService.getFoodById(1));
     }
 
     /**
@@ -66,10 +68,15 @@ class ElmSpringbootBackendApplicationTests {
      */
     @Test
     public void TestCart(){
-
+        CartListVo vo=new CartListVo();
+        vo.setBusinessId(10001);
+        vo.setUserId(4);
         System.out.println(cartService.listCartByAccountId(4));
-//        System.out.println(cartService.listCartByAccountIdAndBusinessId(cart));
-//        System.out.println(cartService.listCartByAccountId(4));
+        System.out.println(cartService.listCartByAccountIdAndBusinessId(vo));
+        System.out.println(cartService.listCartByAccountId(4));
+//        System.out.println(cartService.saveCart());
+//        System.out.println(cartService.updateCart());
+//        System.out.println(cartService.removeCart());
     }
 
     /**
@@ -77,8 +84,8 @@ class ElmSpringbootBackendApplicationTests {
      */
     @Test
     public void TestDeliveryAddress(){
-//        System.out.println(deliveryAddressService.listDeliveryAddressByUserId(4));
-//        System.out.println(deliveryAddressService.getDeliveryAddressById(1));
+        System.out.println(deliveryAddressService.listDeliveryAddressByUserId(4));
+        System.out.println(deliveryAddressService.getDeliveryAddressById(1));
         DeliveryAddressVo vo=new DeliveryAddressVo();
         vo.setAddress("云南大学呈贡校区");
         vo.setContactName("zhouzhixuan");
@@ -86,7 +93,6 @@ class ElmSpringbootBackendApplicationTests {
         vo.setContactTel("12345678");
         vo.setUserId(4);
         deliveryAddressService.saveDeliveryAddress(vo);
-        System.out.println(deliveryAddressService.getDeliveryAddressById(4));
     }
 
     /**
@@ -102,7 +108,9 @@ class ElmSpringbootBackendApplicationTests {
         System.out.println(ordersService.saveOrders(orderVo));
     }
 
-
+    /**
+     * 测试订单细节功能
+     */
     @Test
     public void TestOrderDetailetService(){
         orderDetailetService.listOrderDetailetbyUserId(4);

@@ -18,6 +18,9 @@ import java.util.List;
  * @author root
  * @since 2023-09-21
  */
+/**
+ * food相关Controller
+ */
 @RestController
 @RequestMapping("/food")
 public class FoodController {

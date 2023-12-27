@@ -20,6 +20,9 @@ import java.util.List;
  * @author root
  * @since 2023-09-21
  */
+/**
+ * orderdetailet相关Controller
+ */
 @RestController
 @RequestMapping("/orderdetailet")
 public class OrderdetailetController {

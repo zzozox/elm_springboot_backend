@@ -70,6 +70,11 @@ public class OrderDetailetServiceImpl extends ServiceImpl<OrderDetailetMapper, O
             OrderDetailetVo orderDetailetVo=new OrderDetailetVo();
             orderDetailetVo.setOrders(order);
             orderDetailetVo.setBusiness(businessService.getBusinessById(order.getBusinessId()));
+//            orderDetailetVo.setOrderId(order.getOrderId());
+//            orderDetailetVo.setOrderTotal(order.getOrderTotal());
+//            orderDetailetVo.setOrderState(order.getOrderState());
+//            orderDetailetVo.setDeliveryPrice(businessService.getBusinessById(order.getBusinessId()).getDeliveryPrice());
+//            orderDetailetVo.setBusinessName(businessService.getBusinessById(order.getBusinessId()).getBusinessName());
             orderDetailetVo.setOrderDetailetListVos(vos);
             orderDetailetVos.add(orderDetailetVo);
         }

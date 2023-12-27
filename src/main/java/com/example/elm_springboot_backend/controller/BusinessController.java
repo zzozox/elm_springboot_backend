@@ -1,6 +1,7 @@
 package com.example.elm_springboot_backend.controller;
 import com.example.elm_springboot_backend.entity.RestBean;
 import com.example.elm_springboot_backend.entity.dto.Business;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,12 @@ import java.util.function.Supplier;
  * @since 2023-09-21
  */
 
+/**
+ * Business相关Controller
+ */
 @RestController
 @RequestMapping("/business")
+@Tag(name = "business", description = "business相关Controller")
 public class BusinessController {
     @Resource
     private BusinessService businessService;
