@@ -29,17 +29,31 @@ public class OrdersController {
     @Resource
     private OrdersService ordersService;
 
-    //如果返回类型不再需要是订单编号，记得修改这里的返回值类型
+    /**
+     * 创建订单
+     * @param vo
+     * @return
+     */
     @PostMapping("/createOrders")
     public RestBean<Orders> createOrders(@RequestBody @Valid OrderVo vo){
         return RestBean.success(ordersService.saveOrders(vo));
     }
 
+    /**
+     * 根据订单编号查询订单
+     * @param orderId
+     * @return
+     */
     @PostMapping("/getOrdersById/{orderId}")
     public RestBean<Orders> getOrdersById(@PathVariable Integer orderId){
         return RestBean.success(ordersService.getOrdersById(orderId));
     }
 
+    /**
+     * 根据用户id查询用户所有订单
+     * @param userId
+     * @return
+     */
     @PostMapping("/listOrdersByUserId/{userId}")
     public RestBean<List<Orders>> listOrdersByUserId(@PathVariable Integer userId){
         return RestBean.success(ordersService.listOrdersByUserId(userId));

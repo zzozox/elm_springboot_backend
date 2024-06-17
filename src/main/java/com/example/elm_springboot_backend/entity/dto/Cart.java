@@ -40,6 +40,4 @@ public class Cart implements BaseData {
     //同一类型食品的购买数量
     @TableField("quantity")
     private Integer quantity;
-
-
 }

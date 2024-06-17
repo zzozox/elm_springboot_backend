@@ -48,6 +48,4 @@ public class Orders implements BaseData {
     //订单状态（0：未支付； 1：已支付）
     @TableField("orderState")
     private Integer orderState;
-
-
 }

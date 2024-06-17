@@ -217,6 +217,11 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         return accountMapper.selectById(userId);
     }
 
+    /**
+     * 更新用户信息
+     * @param updataAccountVo
+     * @return
+     */
     @Override
     public String updateAccount(UpdataAccountVo updataAccountVo) {
         UpdateWrapper<Account> accountUpdateWrapper=new UpdateWrapper<>();

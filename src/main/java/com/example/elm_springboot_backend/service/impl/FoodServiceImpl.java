@@ -35,6 +35,11 @@ public class FoodServiceImpl extends ServiceImpl<FoodMapper, Food> implements Fo
         return foodMapper.selectList(foodQueryWrapper);
     }
 
+    /**
+     * 根据食品编号查询食品详细信息
+     * @param foodId
+     * @return
+     */
     @Override
     public Food getFoodById(Integer foodId) {
         return foodMapper.selectById(foodId);

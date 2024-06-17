@@ -82,12 +82,21 @@ public class AuthorizeController {
         return this.messageHandle(() ->
                 accountService.resetEmailAccountPassword(vo));
     }
-
+    /**
+     * 根据用户id查询用户信息
+     * @param userId
+     * @return
+     */
     @PostMapping("/index/{userId}")
     public RestBean<Account> getUserById(@PathVariable Integer userId){
         return RestBean.success(accountService.findAccountById(userId));
     }
 
+    /**
+     * 修改用户信息
+     * @param vo
+     * @return
+     */
     @PostMapping("/updateUser")
     public RestBean<Void> updateUser(@RequestBody @Valid UpdataAccountVo vo){
         return  this.messageHandle(() ->

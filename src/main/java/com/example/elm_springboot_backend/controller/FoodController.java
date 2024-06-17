@@ -27,12 +27,22 @@ public class FoodController {
     @Resource
     private FoodService foodService;
 
+    /**
+     * 根据商家编号查询该商家的食品
+     * @param businessId
+     * @return
+     */
     @PostMapping ("/byBusinessId/{businessId}")
     public RestBean<List<Food>> FoodByBusinessId(@PathVariable Integer businessId) {
         List<Food> foods = foodService.listFoodByBusinessId(businessId);
         return RestBean.success(foods);
     }
 
+    /**
+     * 根据食品id查询食品信息
+     * @param foodId
+     * @return
+     */
     @PostMapping("/byFoodId/{foodId}")
     public RestBean<Food> findFoodByFoodId(@PathVariable Integer foodId){
         return RestBean.success(foodService.getFoodById(foodId));

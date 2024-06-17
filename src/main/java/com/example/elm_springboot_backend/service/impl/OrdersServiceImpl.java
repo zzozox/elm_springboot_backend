@@ -33,7 +33,11 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
     @Resource
     private OrderDetailetMapper orderDetailetMapper;
 
-
+    /**
+     * 生成订单
+     * @param vo
+     * @return
+     */
     @Override
     public Orders saveOrders(OrderVo vo) {
         Orders orders=new Orders(
@@ -46,11 +50,7 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
                 0);
         if(ordersMapper.insert(orders)==1) {
             //在生成订单的同时再生成订单明细
-            //订单明细应该存的食物和数量是二维数组，与数据库不符，后续有时间再修改
             //在支付页面的订单明细直接由订单确认界面传给支付界面
-            //OrderDetailet orderDetailet=new OrderDetailet();
-            //因为OrderList界面一定会用到订单明细，不能再由Order组件传值，被迫在数据库加表存储订单明细
-            //先查购物车里的食物
             QueryWrapper<Cart> cartQueryWrapper = new QueryWrapper<>();
             cartQueryWrapper.eq("userId", orders.getUserId())
                     .eq("businessId", orders.getBusinessId());
@@ -66,18 +66,27 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
             }
             //订单生成成功后删除购物车记录，即该用户在该商家下的购物车记录
             cartMapper.delete(cartQueryWrapper);
-            //文档上写的返回订单编号，虽然但是，能跑就行，暂时不改
             return orders;
         }else {
             return null;
         }
     }
 
+    /**
+     * 通过订单编号查询订单详情
+     * @param orderId
+     * @return
+     */
     @Override
     public Orders getOrdersById(Integer orderId) {
         return ordersMapper.selectById(orderId);
     }
 
+    /**
+     * 用户id查询用户所有订单
+     * @param userId
+     * @return
+     */
     @Override
     public List<Orders> listOrdersByUserId(Integer userId) {
         QueryWrapper<Orders> ordersQueryWrapper=new QueryWrapper<>();

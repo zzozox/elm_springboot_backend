@@ -48,6 +48,12 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
                     .eq("businessId",vo.getBusinessId());
         return cartMapper.selectList(queryWrapper);
     }
+
+    /**
+     * 购物车内食品数量为0时所insert
+     * @param vo
+     * @return
+     */
     @Override
     public String saveCart(CartVo vo) {
         Cart cart=new Cart(null, vo.getFoodId(), vo.getBusinessId(), vo.getUserId(), vo.getQuantity());
@@ -58,6 +64,11 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         }
     }
 
+    /**
+     * 购物车内食品数量不为0时所updata
+     * @param cart
+     * @return
+     */
     @Override
     public String updateCart(Cart cart) {
        UpdateWrapper<Cart> cartUpdateWrapper=new UpdateWrapper<>();
@@ -73,8 +84,13 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         }
     }
 
+    /**
+     * 移除购物车
+     * @param cartId
+     * @return
+     */
     @Override
-    public String  removeCart(Integer cartId) {
+    public String removeCart(Integer cartId) {
         if(cartMapper.deleteById(cartId)==1){
             return null;
         }else{

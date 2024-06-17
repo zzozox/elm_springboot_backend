@@ -29,13 +29,23 @@ public class OrderdetailetController {
     @Resource
     OrderDetailetService orderDetailetService;
 
-    //Order组件的
+    /**
+     * 订单界面的订单订单详情
+     * Order组件的
+     * @param vo
+     * @return
+     */
     @PostMapping("/listOrderDetailet")
     public RestBean<List<OrderDetailetListVo>> listOrderDetailet(@RequestBody @Valid CartListVo vo){
         return RestBean.success(orderDetailetService.listOrderDetailet(vo));
     }
 
-    //OderList组件的
+    /**
+     * 列出所有订单的订单详情
+     * OderList组件的
+     * @param userId
+     * @return
+     */
     @PostMapping("/listOrderDetailetbyUserId/{userId}")
     public RestBean<List<OrderDetailetVo>> listOrderDetailetbyUserId(@PathVariable Integer userId){
         return RestBean.success(orderDetailetService.listOrderDetailetbyUserId(userId));

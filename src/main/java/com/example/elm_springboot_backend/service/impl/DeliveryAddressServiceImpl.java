@@ -26,6 +26,11 @@ public class DeliveryAddressServiceImpl extends ServiceImpl<DeliveryAddressMappe
     @Resource
     private DeliveryAddressMapper deliveryAddressMapper;
 
+    /**
+     * 根据用户id列出该用户所有收货地址信息
+     * @param userId
+     * @return
+     */
     @Override
     public List<DeliveryAddress> listDeliveryAddressByUserId(Integer userId) {
         QueryWrapper<DeliveryAddress> queryWrapper=new QueryWrapper<>();
@@ -33,11 +38,21 @@ public class DeliveryAddressServiceImpl extends ServiceImpl<DeliveryAddressMappe
         return deliveryAddressMapper.selectList(queryWrapper);
     }
 
+    /**
+     * 根据地址id查询地址详细信息
+     * @param daId
+     * @return
+     */
     @Override
     public DeliveryAddress getDeliveryAddressById(Integer daId) {
         return deliveryAddressMapper.selectById(daId);
     }
 
+    /**
+     * 新增收货地址
+     * @param vo
+     * @return
+     */
     @Override
     public String saveDeliveryAddress(DeliveryAddressVo vo) {
         DeliveryAddress da=new DeliveryAddress(null,
@@ -53,6 +68,11 @@ public class DeliveryAddressServiceImpl extends ServiceImpl<DeliveryAddressMappe
         }
     }
 
+    /**
+     * 更新收获地址
+     * @param deliveryAddress
+     * @return
+     */
     @Override
     public String updateDeliveryAddress(DeliveryAddress deliveryAddress) {
         UpdateWrapper<DeliveryAddress> deliveryAddressUpdateWrapper=new UpdateWrapper<>();
@@ -69,6 +89,11 @@ public class DeliveryAddressServiceImpl extends ServiceImpl<DeliveryAddressMappe
         }
     }
 
+    /**
+     * 移除收货地址
+     * @param daId
+     * @return
+     */
     @Override
     public String removeDeliveryAddress(Integer daId) {
         if(deliveryAddressMapper.deleteById(daId)==1){

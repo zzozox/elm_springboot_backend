@@ -27,50 +27,28 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class Food implements BaseData {
-
-
-    /**
-     * 食品编号
-     */
+    //食品编号
     @TableId(value = "foodId", type = IdType.AUTO)
     private Integer foodId;
-
-    /**
-     * 食品名称
-     */
+    //食品名称
     @TableField("foodName")
     private String foodName;
-
-    /**
-     * 食品介绍
-     */
+    //食品介绍
     @TableField("foodExplain")
     private String foodExplain;
-
-    /**
-     * 食品图片
-     */
+    //食品图片
     @TableField("foodImg")
     private String foodImg;
-
-    /**
-     * 食品价格
-     */
+    //食品价格
     @TableField("foodPrice")
     private BigDecimal foodPrice;
-
-    /**
-     * 所属商家编号
-     */
+    //所属商家编号
     @TableField("businessId")
     private Integer businessId;
-
     //食品数量
     @TableField("quantity")
     private Integer quantity;
-    /**
-     * 备注
-     */
+    //备注
     private String remarks;
 
 

@@ -17,16 +17,22 @@ import java.util.Date;
 @TableName("user")
 @AllArgsConstructor
 public class Account implements BaseData {
+    //用户id
     @TableId(value = "id",type = IdType.AUTO)
     private Integer userId;
+    //用户名
     @TableField("username")
     private String username;
+    //用户密码
     @TableField("password")
     private String password;
+    //用户邮箱
     @TableField("email")
     private String email;
+    //用户角色
     @TableField("role")
     private String role;
+    //用户注册时间
     @TableField("register_time")
     private Date registerTime;
     //用户性别

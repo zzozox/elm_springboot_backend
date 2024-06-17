@@ -31,7 +31,6 @@ public class BusinessController {
 
     /**
      * 列出所有商家
-     *
      */
     @GetMapping("/list")
     public RestBean<List<Business>> getAllBusinesses() {

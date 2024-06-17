@@ -43,7 +43,6 @@ public class OrderDetailetServiceImpl extends ServiceImpl<OrderDetailetMapper, O
     private BusinessService businessService;
 
     //在支付页面的订单明细直接由订单确认界面传给支付界面
-
     //以下方法主要用于OrderList组件
     @Override
     public List<OrderDetailetVo> listOrderDetailetbyUserId(Integer userId) {
@@ -70,11 +69,6 @@ public class OrderDetailetServiceImpl extends ServiceImpl<OrderDetailetMapper, O
             OrderDetailetVo orderDetailetVo=new OrderDetailetVo();
             orderDetailetVo.setOrders(order);
             orderDetailetVo.setBusiness(businessService.getBusinessById(order.getBusinessId()));
-//            orderDetailetVo.setOrderId(order.getOrderId());
-//            orderDetailetVo.setOrderTotal(order.getOrderTotal());
-//            orderDetailetVo.setOrderState(order.getOrderState());
-//            orderDetailetVo.setDeliveryPrice(businessService.getBusinessById(order.getBusinessId()).getDeliveryPrice());
-//            orderDetailetVo.setBusinessName(businessService.getBusinessById(order.getBusinessId()).getBusinessName());
             orderDetailetVo.setOrderDetailetListVos(vos);
             orderDetailetVos.add(orderDetailetVo);
         }

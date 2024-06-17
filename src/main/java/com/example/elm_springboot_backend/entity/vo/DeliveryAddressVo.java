@@ -2,6 +2,9 @@ package com.example.elm_springboot_backend.entity.vo;
 
 import lombok.Data;
 
+/**
+ * 新增收货地址
+ */
 @Data
 public class DeliveryAddressVo {
     //联系人姓名
